@@ -1,115 +1,110 @@
-<h1 align="center">Lab for Claude Code</h1>
+# Lab for Claude Code
 
-<p align="center">
-  <strong>The open-source laboratory information management system (LIMS) that is just a database and Claude Code.</strong>
-</p>
+Samples, test worklists, result revisions and draft certificates in a database you own. Built by Enterprise DNA. MIT licence. Works with Claude Code, Codex, OpenCode or Cursor.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
-
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your QBench data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=qbench">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/qbench?utm_source=github&utm_medium=readme&utm_campaign=qbench">How it works</a></td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-qbench">Instead of QBench</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
-
----
-
-## What is this
-
-Lab for Claude Code does the job you pay QBench for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the QBench dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays QBench per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=qbench).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+| Do it yourself | We customise it | We run it for you |
+|---|---|---|
+| Free code. Install and operate it. Hosting and agent costs are yours. | Your methods, fields, forms and QBench data mapping. [Book a call](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=qbench&utm_medium=github). | Installed, connected and operated through Omni by Enterprise DNA. One setup fee, then a retainer. [See the offer](https://enterprisedna.co/omni/instead-of/qbench). |
 
 ## Quick start
-
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
 
 ```bash
 git clone https://github.com/Enterprise-DNA-OS/lab-for-claude-code.git
 cd lab-for-claude-code
 npm install
 npm run demo
+npm test
+npm run view
+npm run docs
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+Node 20 or newer. Local mode uses embedded PGlite without a server. The demo has two fictional customers, four samples, four tests, failed quality control, an expired calibration and a damaged-seal issue. Methods and limits are illustrative, not drinking-water or food acceptance criteria. Seeding twice does not duplicate records. Use a separate database for live work.
 
-### Use it with your own Postgres or Supabase
+Set DATABASE_URL through the environment for a shared Postgres database and run `npm run migrate`. Configure permissions, backups and operator identity before shared use. The local database supports one process at a time.
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+## Weekly laboratory work
 
-## The commands
-
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
-
-| Command | What it does |
+| Job | Recipe |
 |---|---|
-| `/...` | ... |
+| /add | .claude/commands/add.md |
+| /attention | .claude/commands/attention.md |
+| /bench-worklist | .claude/commands/bench-worklist.md |
+| /close-issue | .claude/commands/close-issue.md |
+| /compliance | .claude/commands/compliance.md |
+| /customers | .claude/commands/customers.md |
+| /customise | .claude/commands/customise.md |
+| /documents | .claude/commands/documents.md |
+| /draft-weekly | .claude/commands/draft-weekly.md |
+| /equipment | .claude/commands/equipment.md |
+| /export | .claude/commands/export.md |
+| /import | .claude/commands/import.md |
+| /issues | .claude/commands/issues.md |
+| /log | .claude/commands/log.md |
+| /methods | .claude/commands/methods.md |
+| /new-view | .claude/commands/new-view.md |
+| /review-queue | .claude/commands/review-queue.md |
+| /review-result | .claude/commands/review-result.md |
+| /sample | .claude/commands/sample.md |
+| /samples | .claude/commands/samples.md |
+| /test | .claude/commands/test.md |
+| /turnaround | .claude/commands/turnaround.md |
+| /weekly-review | .claude/commands/weekly-review.md |
 
-## Instead of qbench
+The five bench rituals are intake, bench worklist, result review, equipment checks and customer turnaround. One CLI supports human output or --json. [Write flags and examples](docs/cli.md) cover adding records, logging evidence and reviewing results.
 
-<!-- TODO(author): how to bring data across from QBench; link docs/replace-qbench.md -->
+## Evidence before review
 
-## Architecture
+Nine business tables hold customers, versioned methods, instruments, samples, tests, result revisions, reviews, custody and issues. Three database views drive worklist, attention and turnaround. Each result snapshots its method and calibration evidence. Corrections add a revision; earlier values and reviews remain. Review refuses failed quality control, absent validation, out-of-date calibration at measurement and unresolved sample issues. Independent review is a house policy, not a claimed universal legal requirement.
 
+Names supplied to the CLI are recorded labels, not authenticated identities. There is no signed release workflow or production accreditation claim. [Compliance scope and sources](docs/compliance.md) explain the checks. Your lab validates its intended use before relying on it.
+
+## Ten questions across your records
+
+QBench offers configurable reports and analytics. These are questions this free version answers today; we have not established that QBench cannot answer them.
+
+1. Which overdue tests still await review rather than a measurement? (`worklist`)
+2. Which customers have the most overdue tests in our loaded history? (`turnaround`)
+3. Which results combine failed quality control and values outside our recorded limits? (`review-queue`)
+4. Which instruments have expired calibration or missing evidence? (`compliance`)
+5. Which sample receipts have no collection time or custody entry? (`compliance`)
+6. Which methods have no validation reference? (`compliance`)
+7. Which test results were measured outside the recorded calibration period? (`compliance`)
+8. Which samples have arrived without any assigned tests? (`attention`)
+9. Who owns each open sample issue and when is it due? (`issues`)
+10. What changed between every recorded revision of a result? (`test T001`)
+
+## Paperwork and views
+
+`npm run docs` creates a draft certificate of analysis and custody record for each sample, plus nonconformance records. `npm run view` creates views/week.html from the same database views as the CLI. Change brand.json to use your business name, logo and colours. Every certificate says DRAFT, including reviewed results. Recorded limits are a simple screening check; the base does not make conformity decisions.
+
+## Your first hour: ten things to ask for
+
+1. Put our business name and logo on the draft certificate.
+2. Add our customer reference to intake.
+3. Register our method codes and revisions.
+4. Add our instrument calibration evidence.
+5. Map our QBench sample headings.
+6. Show overdue tests by analyst.
+7. Add our preservation and holding-time policy.
+8. Add our agreed uncertainty statement to draft reports.
+9. Add a date window to the customer turnaround view.
+10. Draft this week's review from the current records.
+
+/customise backs up first, writes and applies a migration, updates affected reads and documents, and tests the result. /new-view adds a read-only dashboard.
+
+## Instead of QBench
+
+The [switch guide](docs/replace-qbench.md) covers the vendor export steps, XLSX and CSV intake, field mapping, dry runs and reconciliation. Sample intake is a one-command import after customers and headings are mapped. It does not bring over tests, worksheets, attachments, signatures or audit history. Conflicting reimports fail atomically rather than changing existing evidence.
+
+```bash
+npm run lab -- import qbench --file=examples/qbench-samples.csv --dry-run
+npm run lab -- export
 ```
-lab-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
-```
 
-## Built for coding agents
+The sample fixture is synthetic. QBench custom fields vary by tenant; check your actual export. [Why no front end](docs/why-no-front-end.md) describes mobile capture, barcode and instrument connections as custom work.
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+## Verification
 
-## Contributing
+`npm test` uses a temporary database and output directory. It checks idempotent migrations and seed, every CLI path, evidence revisions, blocked reviews, ambiguous names, XLSX and CSV import, rollback, JSON export and branded documents. CI covers Linux and Windows plus PostgreSQL. Local results are reported separately from hosted CI results.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
-
-## Want it installed and run for you?
-
-Enterprise DNA installs Lab for Claude Code for your business, migrates your QBench data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
-
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=qbench)
-- Read more: [enterprisedna.co/omni/instead-of/qbench](https://enterprisedna.co/omni/instead-of/qbench?utm_source=github&utm_medium=readme&utm_campaign=qbench)
-
-## License
-
-MIT. Copyright (c) 2026 Enterprise DNA.
+MIT. Copyright 2026 Enterprise DNA.

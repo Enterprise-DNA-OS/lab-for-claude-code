@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Bench work",
+    "ask": "Which tests are overdue or waiting for review?",
+    "command": "npm run lab -- worklist",
+    "output": "  code  sample  customer                  method  analyst  due_date    status         \n  ----  ------  ------------------------  ------  -------  ----------  ---------------\n  T001  S001    Harbour Water Lab Client  PH      Aroha    2026-10-02  reviewed       \n  T002  S001    Harbour Water Lab Client  TURB    Aroha    2026-10-02  awaiting review\n  T003  S002    Harbour Water Lab Client  PH      Ben      2026-10-03  awaiting review\n  T004  S003    Southern Materials        SOLIDS  Ben      2026-10-06  awaiting result"
+  },
+  {
+    "title": "Needs attention",
+    "ask": "What needs the lab manager’s attention today?",
+    "command": "npm run lab -- attention",
+    "output": "  rule            reference  customer                  owner        due_date    detail                                    \n  --------------  ---------  ------------------------  -----------  ----------  ------------------------------------------\n  CALIBRATION     TB01       Laboratory                Lab manager  2026-09-24  Calibration expired or evidence incomplete\n  QC_HOLD         T002       Harbour Water Lab Client  Aroha        2026-10-02  Quality control: fail                     \n  SPECIFICATION   T002       Harbour Water Lab Client  Aroha        2026-10-02  Result outside recorded limits            \n  TEST_OVERDUE    T002       Harbour Water Lab Client  Aroha        2026-10-02  Test past due: awaiting review            \n  OPEN_ISSUE      I001       Southern Materials        Casey        2026-10-03  Damaged seal: request sampling context    \n  TEST_OVERDUE    T003       Harbour Water Lab Client  Ben          2026-10-03  Test past due: awaiting review            \n  SAMPLE_NO_TEST  S004       Southern Materials        Intake       2026-10-07  No test assigned"
+  },
+  {
+    "title": "Customer turnaround",
+    "ask": "Which customers are waiting on our tests?",
+    "command": "npm run lab -- turnaround",
+    "output": "  customer                  tests  reviewed  overdue  qc_failures  outside_limits\n  ------------------------  -----  --------  -------  -----------  --------------\n  Harbour Water Lab Client  3      1         2        1            1             \n  Southern Materials        1      0         0        0            0"
+  }
+]

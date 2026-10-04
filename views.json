@@ -1,13 +1,20 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Lab for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Laboratory week",
+    "subtitle": "Read-only snapshot. Demo records are fictional.",
     "sections": [
       {
+        "title": "Tests to run and review",
+        "sql": "select code,sample,customer,method,analyst,due_date,status from worklist order by due_date,code"
+      },
+      {
         "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "sql": "select * from attention order by due_date nulls first,rule"
+      },
+      {
+        "title": "Customer turnaround",
+        "sql": "select * from turnaround order by customer"
       }
     ]
   }

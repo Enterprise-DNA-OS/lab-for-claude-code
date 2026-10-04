@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Which overdue tests still await review rather than a measurement?",
+    "command": "worklist"
+  },
+  {
+    "question": "Which customers have the most overdue tests in our loaded history?",
+    "command": "turnaround"
+  },
+  {
+    "question": "Which results combine failed quality control and values outside our recorded limits?",
+    "command": "review-queue"
+  },
+  {
+    "question": "Which instruments have expired calibration or missing evidence?",
+    "command": "compliance"
+  },
+  {
+    "question": "Which sample receipts have no collection time or custody entry?",
+    "command": "compliance"
+  },
+  {
+    "question": "Which methods have no validation reference?",
+    "command": "compliance"
+  },
+  {
+    "question": "Which test results were measured outside the recorded calibration period?",
+    "command": "compliance"
+  },
+  {
+    "question": "Which samples have arrived without any assigned tests?",
+    "command": "attention"
+  },
+  {
+    "question": "Who owns each open sample issue and when is it due?",
+    "command": "issues"
+  },
+  {
+    "question": "What changed between every recorded revision of a result?",
+    "command": "test T001"
+  }
+]

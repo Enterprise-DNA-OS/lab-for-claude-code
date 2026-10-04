@@ -1,43 +1,44 @@
-# Lab for Claude Code: operating instructions
+# Lab for Claude Code
 
-This file is the brain. Claude Code reads it at the start of every session. It says who this is for, how work gets done, and the one right way to do each recurring job.
+For a food, environmental or materials testing laboratory managing intake, test worklists and technical review. Set your business name, scope, operators, methods and policy before loading live data. No patient diagnosis, regulated report release or automatic instrument control.
 
-## Who this is for
+Every answer starts with a CLI read. Run `npm run lab -- help`. All reads support --json. Names are case insensitive; ambiguous names list candidates and exit 1. Read docs/cli.md before writes.
 
-- **Business:** [YOUR BUSINESS]
-- **Operator:** [YOUR NAME], [your role]
-- **What matters most:** [the one or two outcomes you care about]
-
-Fill this in once. A worker with context knows. A worker without it guesses.
-
-## How to work
-
-1. **Take a brief, not a script.** The operator describes the outcome. You run the right command and present the answer.
-2. **Read before you write.** Before drafting anything about a record, read its full history first.
-3. **Plain language.** Short sentences. No filler. Numbers in tables.
-4. **Silent success, loud problems.** No play-by-play. Say what broke and what you did about it.
-5. **Stop at the line.** Anything that sends, deletes, or faces a customer waits for a yes in this session.
-
-## Routing table: one right way for each recurring job
-
-| When the operator asks for... | Use this |
+| Job | Recipe |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| /add | .claude/commands/add.md |
+| /attention | .claude/commands/attention.md |
+| /bench-worklist | .claude/commands/bench-worklist.md |
+| /close-issue | .claude/commands/close-issue.md |
+| /compliance | .claude/commands/compliance.md |
+| /customers | .claude/commands/customers.md |
+| /customise | .claude/commands/customise.md |
+| /documents | .claude/commands/documents.md |
+| /draft-weekly | .claude/commands/draft-weekly.md |
+| /equipment | .claude/commands/equipment.md |
+| /export | .claude/commands/export.md |
+| /import | .claude/commands/import.md |
+| /issues | .claude/commands/issues.md |
+| /log | .claude/commands/log.md |
+| /methods | .claude/commands/methods.md |
+| /new-view | .claude/commands/new-view.md |
+| /review-queue | .claude/commands/review-queue.md |
+| /review-result | .claude/commands/review-result.md |
+| /sample | .claude/commands/sample.md |
+| /samples | .claude/commands/samples.md |
+| /test | .claude/commands/test.md |
+| /turnaround | .claude/commands/turnaround.md |
+| /weekly-review | .claude/commands/weekly-review.md |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+Rules:
 
-## Hard rules
+- Do not invent results, sampling dates, limits, reviewer identities, calibration evidence or command output.
+- Results, reviews and custody events are append-only. Correct a result with a new revision and a reason. A new revision requires a new review.
+- Record only a review that the named person has actually performed. The CLI does not authenticate the supplied name.
+- Nothing sends, deletes, certifies accreditation or issues reports. All documents are drafts.
+- Compliance checks are evidence-gap checks. Read docs/compliance.md and the laboratory's own applicable criteria.
+- Import samples only from a checked QBench spreadsheet or CSV mapping. Never infer missing custody or review history.
+- Local mode is one process at a time. Shared use needs database permissions, identity integration, backups and validation.
+- No live secrets in files or commits. Use numbered migrations, preserve evidence, and run npm test after a change.
 
-- Never send email or messages from here. Draft to `drafts/`, a person sends.
-- Never delete records without an explicit yes in this session. Prefer marking closed or archived.
-- Never invent a record. If a name is ambiguous, list the candidates and ask.
-- The database is the source of truth. If the answer is not in it, say so.
-
-## Where things live
-
-- `scripts/` the CLI. `scripts/lib/db.mjs` picks `DATABASE_URL` (Postgres, Supabase) or the embedded database in `.data/`.
-- `supabase/migrations/` the schema, plain SQL. `npm run migrate` applies it.
-- `.claude/commands/` the slash commands. Add one every time the same ask comes twice.
-- `docs/` the thesis and the guide for moving off QBench.
-
-Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/qbench
+Records live in supabase/migrations, the CLI in scripts/lab.mjs, presentation in brand.json, documents.json and views.json. AGENTS.md routes other agents here. Omni by Enterprise DNA installs and runs a customised version.

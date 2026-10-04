@@ -1,11 +1,52 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "certificate",
+    "title": "DRAFT Certificate of analysis",
+    "for_each": "select id,code from samples",
+    "file": "code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Sample and customer",
+        "note": "DRAFT ONLY. Not authorised for issue or an accreditation statement. Results relate only to this sample. Confirm report contents, methods, uncertainty and scope with the laboratory reviewer.",
+        "sql": "select s.code,s.name,c.name customer,s.matrix,s.collected_at,s.received_at,s.condition from samples s join customers c on c.id=s.customer_id where s.id=$1"
+      },
+      {
+        "title": "Latest recorded results",
+        "note": "Values and uncertainty use the recorded method unit. Recorded limits are a screening rule, not a conformity decision. Unreviewed results remain visible as drafts.",
+        "sql": "select t.code test,r.revision,r.value,r.uncertainty,r.method_snapshot->>'unit' unit,r.method_snapshot->>'code' method,r.method_snapshot->>'revision' method_revision,r.measured_at,r.qc,coalesce(v.reviewer,'UNREVIEWED') reviewer,r.raw_ref from tests t left join lateral(select * from results where test_id=t.id order by revision desc limit 1) r on true left join reviews v on v.result_id=r.id where t.sample_id=$1 order by t.code"
+      },
+      {
+        "title": "Open issues",
+        "sql": "select code,description,owner from issues where sample_id=$1 and closed_at is null"
+      }
+    ]
+  },
+  {
+    "name": "custody",
+    "title": "DRAFT Sample custody record",
+    "for_each": "select id,code from samples",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Receipt",
+        "sql": "select code,name,collected_at,received_at,condition,location from samples where id=$1"
+      },
+      {
+        "title": "Recorded movements",
+        "sql": "select happened_at,handler,location,note from custody where sample_id=$1 order by happened_at"
+      }
+    ]
+  },
+  {
+    "name": "nonconformance",
+    "title": "DRAFT Nonconformance record",
+    "for_each": "select id,code from issues",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Issue and action",
+        "sql": "select i.code,s.code sample,i.description,i.owner,i.due_date,i.resolution,i.closed_at from issues i join samples s on s.id=i.sample_id where i.id=$1"
+      }
     ]
   }
 ]

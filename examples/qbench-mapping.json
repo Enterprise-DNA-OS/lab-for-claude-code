@@ -1,0 +1,11 @@
+{
+  "code": "Sample ID",
+  "name": "Sample Name",
+  "customer": "Customer",
+  "matrix": "Matrix",
+  "collected": "Collected At",
+  "received": "Received At",
+  "due": "Due Date",
+  "condition": "Condition",
+  "location": "Location"
+}
