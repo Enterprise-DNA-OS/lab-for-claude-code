@@ -4,7 +4,7 @@ Samples, test worklists, result revisions and draft certificates in a database y
 
 | Do it yourself | We customise it | We run it for you |
 |---|---|---|
-| Free code. Install and operate it. Hosting and agent costs are yours. | Your methods, fields, forms and QBench data mapping. [Book a call](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=qbench&utm_medium=github). | Installed, connected and operated through Omni by Enterprise DNA. One setup fee, then a retainer. [See the offer](https://enterprisedna.co/omni/instead-of/qbench). |
+| Free code. Install and operate it. Hosting and agent costs are yours. | Your methods, fields, forms and QBench data mapping. [Book a call](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=qbench&utm_medium=github). | Installed, connected and operated through Omni by Enterprise DNA. One setup fee, then a retainer. [See the offer](https://enterprisedna.co/omni/instead-of/qbench?utm_source=github&utm_medium=readme&utm_campaign=qbench). |
 
 ## Quick start
 
